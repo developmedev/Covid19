@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CoronavirusSOS.Views.ItemsPage"
+             Title="{Binding Title}"
+             BackgroundImageSource="contagious.jpg"
+             x:Name="BrowseItemsPage">
+    <ContentPage.ToolbarItems>
+     
+    </ContentPage.ToolbarItems>
+    <StackLayout Padding="5,5,5,5">
+        <Label FontAttributes="Bold" TextColor="White" FontSize="Large" Text="Coronavirus Cases" HorizontalOptions="CenterAndExpand"/>
+        <Label x:Name="test" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"></Label>
+        <Label FontAttributes="Bold" TextColor="White" FontSize="Large" Text="Deaths" HorizontalOptions="CenterAndExpand"/>
+        <Label x:Name="test1" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"></Label>
+        <Label FontAttributes="Bold" TextColor="White" FontSize="Large" Text="Recovered" HorizontalOptions="CenterAndExpand"/>
+        <Label x:Name="test2" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"></Label>
+    </StackLayout>
+
+</ContentPage>

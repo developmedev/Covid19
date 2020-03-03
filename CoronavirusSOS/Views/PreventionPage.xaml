@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CoronavirusSOS.Views.PreventionPage"
+               xmlns:vm="clr-namespace:CoronavirusSOS.ViewModels"
+             BackgroundImageSource="contagious.jpg"
+             Title="{Binding Title}"
+             >
+    <ContentPage.BindingContext>
+        <vm:PreventionViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="5,5,5,5">
+                <Label TextColor="White" Text="There is currently no vaccine to prevent coronavirus disease 2019 (COVID-19). The best way to prevent illness is to avoid being exposed to this virus. However, as a reminder, CDC always recommends everyday preventive actions to help prevent the spread of respiratory diseases, including:"/>
+                <Label TextColor="White" Text="&#x2022; Avoid close contact with people who are sick."/>
+                <Label TextColor="White" Text="&#x2022; Avoid touching your eyes, nose, and mouth."/>
+                <Label TextColor="White" Text="&#x2022; Stay home when you are sick."/>
+                <Label TextColor="White" Text="&#x2022; Cover your cough or sneeze with a tissue, then throw the tissue in the trash."/>
+                <Label TextColor="White" Text="&#x2022; Clean and disinfect frequently touched objects and surfaces using a regular household cleaning spray or wipe."/>
+                <Label TextColor="White" Text="&#x2022; Wash your hands often with soap and water for at least 20 seconds, especially after going to the bathroom; before eating; and after blowing your nose, coughing, or sneezing."/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

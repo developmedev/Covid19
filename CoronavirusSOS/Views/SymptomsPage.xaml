@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CoronavirusSOS.Views.SymptomsPage"
+             xmlns:vm="clr-namespace:CoronavirusSOS.ViewModels"
+             BackgroundImageSource="contagious.jpg"
+               Title="{Binding Title}"
+             >
+    <ContentPage.BindingContext>
+        <vm:SymptomsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView >
+        <StackLayout Padding="5,5,5,5">
+
+                <Label TextColor="White" Text="Reported illnesses have ranged from mild symptoms to severe illness and death for confirmed coronavirus disease 2019 (COVID-19) cases." HorizontalOptions="CenterAndExpand"></Label>
+                <Label TextColor="White" Text="Symptoms may appear 2-14 days after exposure*:"></Label>
+                <Label TextColor="White" Text="&#x2022; Fever" />
+                <Label TextColor="White" Text="&#x2022; Cough" />
+                <Label TextColor="White" Text="&#x2022; Shortness of breath" />
+                <Label TextColor="White" Text="Call your healthcare professional if you develop symptoms, and have been in close contact with a person known to have COVID-19 or if you have recently traveled from an area with widespread or ongoing community spread of COVID-19."></Label>
+            <Button CornerRadius="15" Clicked="Button_Clicked" Text="Find Medical Help"></Button>
+                <Label TextColor="White" Text="Current Countries affected in blue" HorizontalOptions="Center"></Label>
+            <Image Source="https://www.cdc.gov/coronavirus/2019-ncov/images/outbreak-coronavirus-world.png"></Image>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
