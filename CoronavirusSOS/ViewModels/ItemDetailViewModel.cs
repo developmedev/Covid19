@@ -1,13 +1,13 @@
 ﻿using System;
 
-using CoronavirusSOS.Models;
+using CoronavirusSOS.RestService;
 
 namespace CoronavirusSOS.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public Update Item { get; set; }
+        public ItemDetailViewModel(Update item = null)
         {
             Title = item?.Text;
             Item = item;

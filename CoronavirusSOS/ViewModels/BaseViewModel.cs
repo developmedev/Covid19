@@ -5,14 +5,15 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-using CoronavirusSOS.Models;
+
 using CoronavirusSOS.Services;
+using CoronavirusSOS.RestService;
 
 namespace CoronavirusSOS.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Update> DataStore => DependencyService.Get<IDataStore<Update>>();
 
         bool isBusy = false;
         public bool IsBusy

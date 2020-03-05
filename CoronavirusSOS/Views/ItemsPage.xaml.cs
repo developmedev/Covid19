@@ -6,11 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using CoronavirusSOS.Models;
 using CoronavirusSOS.Views;
 using CoronavirusSOS.ViewModels;
 using CoronavirusSOS.RestService;
+using Xamarin.Essentials;
 
 namespace CoronavirusSOS.Views
 {
@@ -27,18 +26,22 @@ namespace CoronavirusSOS.Views
 
             BindingContext = viewModel = new ItemsViewModel();
             RestApi = new RestApi();
+       
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            var item = args.SelectedItem as Update;
             if (item == null)
                 return;
-
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            if (!string.IsNullOrEmpty(item.Url))
+            {
+                await Launcher.OpenAsync(new Uri(item.Url));
+            }
+            
 
             // Manually deselect item.
-          
+
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -49,10 +52,16 @@ namespace CoronavirusSOS.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            if (viewModel.Items.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
+
             var values = RestApi.GetVsAsync().ToArray();
             test.Text = values[0];
             test1.Text = values[1];
             test2.Text = values[2];
+           
+           
+
         }
     }
 }

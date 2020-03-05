@@ -18,6 +18,43 @@
         <Label x:Name="test1" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"></Label>
         <Label FontAttributes="Bold" TextColor="White" FontSize="Large" Text="Recovered" HorizontalOptions="CenterAndExpand"/>
         <Label x:Name="test2" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"></Label>
+        <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>First Item</x:String>
+                    <x:String>Second Item</x:String>
+                    <x:String>Third Item</x:String>
+                    <x:String>Fourth Item</x:String>
+                    <x:String>Fifth Item</x:String>
+                    <x:String>Sixth Item</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <StackLayout Padding="10">
+                         
+                            <Label Text="{Binding Text}" 
+                                d:Text="Item description"
+                                LineBreakMode="NoWrap"
+                                   TextColor="White"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </StackLayout>
 
 </ContentPage>

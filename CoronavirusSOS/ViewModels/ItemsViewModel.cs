@@ -4,26 +4,25 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
-using CoronavirusSOS.Models;
 using CoronavirusSOS.Views;
+using CoronavirusSOS.RestService;
 
 namespace CoronavirusSOS.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Update> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Updates";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<Update>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, Update>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
+                var newItem = item as Update;
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });

@@ -2,9 +2,8 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using CoronavirusSOS.Models;
 using CoronavirusSOS.ViewModels;
+using CoronavirusSOS.RestService;
 
 namespace CoronavirusSOS.Views
 {
@@ -26,10 +25,10 @@ namespace CoronavirusSOS.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Update
             {
                 Text = "Item 1",
-                Description = "This is an item description."
+               
             };
 
             viewModel = new ItemDetailViewModel(item);

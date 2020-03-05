@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using CoronavirusSOS.Models;
+using CoronavirusSOS.RestService;
 
 namespace CoronavirusSOS.Views
 {
@@ -13,16 +12,16 @@ namespace CoronavirusSOS.Views
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Update Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new Update
             {
                 Text = "Item name",
-                Description = "This is an item description."
+             
             };
 
             BindingContext = this;
