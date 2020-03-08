@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CoronavirusSOS.Services;
 using CoronavirusSOS.Views;
+using Xamarin.Essentials;
 
 namespace CoronavirusSOS
 {
@@ -12,7 +13,6 @@ namespace CoronavirusSOS
         public App()
         {
             InitializeComponent();
-
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }

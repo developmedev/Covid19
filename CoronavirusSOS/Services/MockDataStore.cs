@@ -13,7 +13,13 @@ namespace CoronavirusSOS.Services
         public MockDataStore()
         {
             RestApi = new RestApi();
-            items = RestApi.GetUpdatesAsync();
+            items = RestApi.GetUpdatesAsync(0);
+            var count = 0;
+            while(items.Count==0)
+            {
+                items = RestApi.GetUpdatesAsync(count);
+                count++;
+            }
         }
 
         public async Task<bool> AddItemAsync(Update item)

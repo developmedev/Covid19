@@ -97,7 +97,7 @@ namespace CoronavirusSOS.RestService
             }
             return values;
         }
-        public List<Update> GetUpdatesAsync()
+        public List<Update> GetUpdatesAsync(int subday)
         {
 
             List<Update> values = new List<Update>();
@@ -132,12 +132,14 @@ namespace CoronavirusSOS.RestService
                                                         {
                                                             foreach (var g in e.ChildNodes)
                                                             {
-                                                                if (g.Id == getIdToday())
+                                                                if (g.Id == getIdToday(subday))
                                                                 {
+                                                                    var c = 0;
                                                                     foreach(var t in e.ChildNodes)
                                                                     {
-                                                                        if (t.Name == "ul")
+                                                                        if (t.Name == "ul"&&c==0)
                                                                         {
+                                                                            c++;
                                                                             foreach (var x in t.ChildNodes)
                                                                             {
 
@@ -165,7 +167,7 @@ namespace CoronavirusSOS.RestService
                                                                         }
                                                                     }
                                                                   
-                                                                   
+                                                                  
                                                                 }
                                                             }
                                                             //text += e.InnerHtml.ToString();
@@ -189,13 +191,17 @@ namespace CoronavirusSOS.RestService
             }
             return values;
         }
-        public string getIdToday()
+        public string getIdToday(int subday)
         {
             var date = DateTime.Today;
             var month = date.Month;
-            var day = date.Day;
+            var day = date.Day-subday;
             var monthstring = "";
             var daystring = ""+day;
+            if (subday == 0) 
+            {
+                daystring = "05";
+            }
             switch (month)
             {
                 case 1:

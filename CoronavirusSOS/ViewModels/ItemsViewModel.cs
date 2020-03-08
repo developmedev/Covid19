@@ -53,5 +53,6 @@ namespace CoronavirusSOS.ViewModels
                 IsBusy = false;
             }
         }
+      
     }
 }

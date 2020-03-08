@@ -18,6 +18,7 @@ namespace CoronavirusSOS.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
+        public static int count { get; set; }
         ItemsViewModel viewModel;
         RestApi RestApi;
         public ItemsPage()
@@ -26,7 +27,7 @@ namespace CoronavirusSOS.Views
 
             BindingContext = viewModel = new ItemsViewModel();
             RestApi = new RestApi();
-       
+            count = 0;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -52,13 +53,19 @@ namespace CoronavirusSOS.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
-
-            var values = RestApi.GetVsAsync().ToArray();
-            test.Text = values[0];
-            test1.Text = values[1];
-            test2.Text = values[2];
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                if (viewModel.Items.Count == 0)
+                {
+                    viewModel.LoadItemsCommand.Execute(null);
+                    var values = RestApi.GetVsAsync().ToArray();
+                    test.Text = values[0];
+                    test1.Text = values[1];
+                    test2.Text = values[2];
+                }
+                   
+            });
+           
            
            
 

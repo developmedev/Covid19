@@ -18,6 +18,8 @@
         <Label x:Name="test1" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"></Label>
         <Label FontAttributes="Bold" TextColor="White" FontSize="Large" Text="Recovered" HorizontalOptions="CenterAndExpand"/>
         <Label x:Name="test2" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"></Label>
+        <!--<Entry x:Name="Search" Placeholder="Enter Search Value"></Entry>
+        <Button CornerRadius="15" Clicked="Button_Clicked"  Text="Search"/>-->
         <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
