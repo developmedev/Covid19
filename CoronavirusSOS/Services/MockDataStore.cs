@@ -15,7 +15,7 @@ namespace CoronavirusSOS.Services
             RestApi = new RestApi();
             items = RestApi.GetUpdatesAsync(0);
             var count = 0;
-            while(items.Count==0)
+            while(items.Count==0&&count==5)
             {
                 items = RestApi.GetUpdatesAsync(count);
                 count++;

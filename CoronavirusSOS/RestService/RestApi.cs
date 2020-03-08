@@ -120,67 +120,69 @@ namespace CoronavirusSOS.RestService
                                 {
                                     foreach (var i in n.ChildNodes)
                                     {
-                                        if (i.Name == "div")
+                                        foreach (var ii in n.ChildNodes)
                                         {
-                                            foreach (var f in n.ChildNodes)
+                                            if (ii.Name == "div")
                                             {
-                                                if (f.Name == "div")
+                                                foreach (var f in ii.ChildNodes)
                                                 {
-                                                    foreach (var e in f.ChildNodes)
+                                                    if (f.Name == "div")
                                                     {
-                                                        if (e.Id == "innercontent")
+                                                        foreach (var e in f.ChildNodes)
                                                         {
-                                                            foreach (var g in e.ChildNodes)
+                                                            if (e.Id == "innercontent")
                                                             {
-                                                                if (g.Id == getIdToday(subday))
+                                                                foreach (var g in e.ChildNodes)
                                                                 {
-                                                                    var c = 0;
-                                                                    foreach(var t in e.ChildNodes)
+                                                                    if (g.Id == getIdToday(subday))
                                                                     {
-                                                                        if (t.Name == "ul"&&c==0)
+                                                                        var c = 0;
+                                                                        foreach (var t in e.ChildNodes)
                                                                         {
-                                                                            c++;
-                                                                            foreach (var x in t.ChildNodes)
+                                                                            if (t.Name == "ul" && c == 0)
                                                                             {
-
-                                                                                if (x.Name == "li")
+                                                                                c++;
+                                                                                foreach (var x in t.ChildNodes)
                                                                                 {
-                                                                                    var url = "";
-                                                                                    foreach(var r in x.ChildNodes)
+
+                                                                                    if (x.Name == "li")
                                                                                     {
-                                                                                        if (r.Name == "span")
+                                                                                        var url = "";
+                                                                                        foreach (var r in x.ChildNodes)
                                                                                         {
-                                                                                            foreach(var s in r.ChildNodes)
+                                                                                            if (r.Name == "span")
                                                                                             {
-                                                                                                if (s.Name == "a")
+                                                                                                foreach (var s in r.ChildNodes)
                                                                                                 {
-                                                                                                    url = s.GetAttributeValue("href","");
-                                                                                                   
+                                                                                                    if (s.Name == "a")
+                                                                                                    {
+                                                                                                        url = s.GetAttributeValue("href", "");
+
+                                                                                                    }
                                                                                                 }
                                                                                             }
                                                                                         }
+                                                                                        values.Add(new Update() { Id = Guid.NewGuid().ToString(), Text = x.InnerText.Replace("[source]", ""), Url = url });
                                                                                     }
-                                                                                    values.Add(new Update() { Id = Guid.NewGuid().ToString(), Text = x.InnerText.Replace("[source]", ""), Url = url });
-                                                                                }
 
+                                                                                }
                                                                             }
                                                                         }
+
+
                                                                     }
-                                                                  
-                                                                  
                                                                 }
+                                                                //text += e.InnerHtml.ToString();
                                                             }
-                                                            //text += e.InnerHtml.ToString();
                                                         }
                                                     }
                                                 }
                                             }
                                         }
                                     }
+
                                 }
-
                             }
-
                         }
 
                     }
@@ -198,7 +200,7 @@ namespace CoronavirusSOS.RestService
             var day = date.Day-subday;
             var monthstring = "";
             var daystring = ""+day;
-            if (subday == 0) 
+            if (subday == 5) 
             {
                 daystring = "05";
             }
